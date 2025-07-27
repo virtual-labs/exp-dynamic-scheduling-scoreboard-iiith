@@ -1,0 +1,173 @@
+
+/home/runner/work/exp-dynamic-scheduling-scoreboard-iiith/exp-dynamic-scheduling-scoreboard-iiith/experiment/simulation/js/components/FunctionalUnitStatus.js
+  3:7  warning  'FunctionalUnitStatus' is defined but never used  no-unused-vars
+
+/home/runner/work/exp-dynamic-scheduling-scoreboard-iiith/exp-dynamic-scheduling-scoreboard-iiith/experiment/simulation/js/components/InstructionBuilder.js
+    3:7   warning  'InstructionBuilder' is defined but never used  no-unused-vars
+   18:41  warning  'INSTRUCTION_TYPES' is not defined              no-undef
+   42:22  warning  'INSTRUCTION_TYPES' is not defined              no-undef
+   49:27  warning  'FP_REGISTERS' is not defined                   no-undef
+   59:27  warning  'INT_REGISTERS' is not defined                  no-undef
+   70:29  warning  'INSTRUCTION_TYPES' is not defined              no-undef
+   77:27  warning  'FP_REGISTERS' is not defined                   no-undef
+   87:27  warning  'INT_REGISTERS' is not defined                  no-undef
+  105:27  warning  'FP_REGISTERS' is not defined                   no-undef
+  115:31  warning  'FP_REGISTERS' is not defined                   no-undef
+  115:48  warning  'INT_REGISTERS' is not defined                  no-undef
+  125:31  warning  'FP_REGISTERS' is not defined                   no-undef
+  125:48  warning  'INT_REGISTERS' is not defined                  no-undef
+  161:22  warning  'INSTRUCTION_TYPES' is not defined              no-undef
+  186:29  warning  'INSTRUCTION_TYPES' is not defined              no-undef
+
+/home/runner/work/exp-dynamic-scheduling-scoreboard-iiith/exp-dynamic-scheduling-scoreboard-iiith/experiment/simulation/js/components/InstructionList.js
+    3:7   warning  'InstructionList' is defined but never used  no-unused-vars
+  105:34  warning  'INSTRUCTION_TYPES' is not defined           no-undef
+  107:41  warning  'INSTRUCTION_TYPES' is not defined           no-undef
+
+/home/runner/work/exp-dynamic-scheduling-scoreboard-iiith/exp-dynamic-scheduling-scoreboard-iiith/experiment/simulation/js/components/InstructionStatus.js
+    3:7   warning  'InstructionStatus' is defined but never used  no-unused-vars
+   28:31  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+   29:31  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+   30:31  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+   31:31  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+   41:51  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+   42:51  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+   43:51  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+   44:51  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+   88:23  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+   90:60  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+  109:34  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+  141:18  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+  143:18  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+  145:18  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+  147:18  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+  169:34  warning  'INSTRUCTION_TYPES' is not defined             no-undef
+  171:41  warning  'INSTRUCTION_TYPES' is not defined             no-undef
+
+/home/runner/work/exp-dynamic-scheduling-scoreboard-iiith/exp-dynamic-scheduling-scoreboard-iiith/experiment/simulation/js/components/RegisterResult.js
+  3:7  warning  'RegisterResult' is defined but never used  no-unused-vars
+
+/home/runner/work/exp-dynamic-scheduling-scoreboard-iiith/exp-dynamic-scheduling-scoreboard-iiith/experiment/simulation/js/main.js
+    5:28  warning  'Scoreboard' is not defined                              no-undef
+    6:27  warning  'ScoreboardValidator' is not defined                     no-undef
+    7:35  warning  'FeedbackGenerator' is not defined                       no-undef
+   22:9   warning  'instructionBuilder' is assigned a value but never used  no-unused-vars
+   25:34  warning  'InstructionBuilder' is not defined                      no-undef
+   31:31  warning  'InstructionList' is not defined                         no-undef
+   38:33  warning  'InstructionStatus' is not defined                       no-undef
+   46:36  warning  'FunctionalUnitStatus' is not defined                    no-undef
+   51:30  warning  'RegisterResult' is not defined                          no-undef
+  111:18  warning  'INSTRUCTION_STAGES' is not defined                      no-undef
+  114:18  warning  'INSTRUCTION_STAGES' is not defined                      no-undef
+  117:18  warning  'INSTRUCTION_STAGES' is not defined                      no-undef
+  120:18  warning  'INSTRUCTION_STAGES' is not defined                      no-undef
+  144:18  warning  'INSTRUCTION_STAGES' is not defined                      no-undef
+  147:18  warning  'INSTRUCTION_STAGES' is not defined                      no-undef
+  150:18  warning  'INSTRUCTION_STAGES' is not defined                      no-undef
+  153:18  warning  'INSTRUCTION_STAGES' is not defined                      no-undef
+  171:18  warning  'INSTRUCTION_STAGES' is not defined                      no-undef
+  173:18  warning  'INSTRUCTION_STAGES' is not defined                      no-undef
+  175:18  warning  'INSTRUCTION_STAGES' is not defined                      no-undef
+  177:18  warning  'INSTRUCTION_STAGES' is not defined                      no-undef
+
+/home/runner/work/exp-dynamic-scheduling-scoreboard-iiith/exp-dynamic-scheduling-scoreboard-iiith/experiment/simulation/js/utils/feedbackGenerator.js
+   3:7   warning  'FeedbackGenerator' is defined but never used  no-unused-vars
+  38:18  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+  43:18  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+  48:18  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+  53:18  warning  'INSTRUCTION_STAGES' is not defined            no-undef
+  68:34  warning  'INSTRUCTION_TYPES' is not defined             no-undef
+  70:41  warning  'INSTRUCTION_TYPES' is not defined             no-undef
+
+/home/runner/work/exp-dynamic-scheduling-scoreboard-iiith/exp-dynamic-scheduling-scoreboard-iiith/experiment/simulation/js/utils/scoreboard.js
+    3:7   warning  'Scoreboard' is defined but never used           no-unused-vars
+    7:58  warning  'DEFAULT_FUNCTIONAL_UNITS' is not defined        no-undef
+    8:31  warning  'createDefaultRegisterStatus' is not defined     no-undef
+    9:37  warning  'DEFAULT_EXECUTION_CYCLES' is not defined        no-undef
+   18:58  warning  'DEFAULT_FUNCTIONAL_UNITS' is not defined        no-undef
+   19:31  warning  'createDefaultRegisterStatus' is not defined     no-undef
+   42:18  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+   43:18  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+   44:18  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+   45:18  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+   50:58  warning  'DEFAULT_FUNCTIONAL_UNITS' is not defined        no-undef
+   51:31  warning  'createDefaultRegisterStatus' is not defined     no-undef
+   64:18  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+   65:18  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+   66:18  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+   67:18  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+   95:34  warning  'INSTRUCTION_TO_FUNCTIONAL_UNIT' is not defined  no-undef
+  114:28  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  118:25  warning  'INSTRUCTION_TO_FUNCTIONAL_UNIT' is not defined  no-undef
+  175:28  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  206:28  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  242:28  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  293:65  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  313:26  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  322:40  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  326:57  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  353:36  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  358:36  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  359:36  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  368:36  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  369:36  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  370:36  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  379:36  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  380:36  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  381:36  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  410:18  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  414:18  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  416:43  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  417:43  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  419:18  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  421:17  warning  Unexpected lexical declaration in case block     no-case-declarations
+  423:43  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  424:43  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  426:18  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  428:43  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  429:43  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  442:32  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  449:49  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  456:35  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  458:39  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  460:36  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  464:39  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  467:39  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  471:36  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  472:35  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  474:39  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  476:36  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  493:43  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+
+/home/runner/work/exp-dynamic-scheduling-scoreboard-iiith/exp-dynamic-scheduling-scoreboard-iiith/experiment/simulation/js/utils/types.js
+   27:7   warning  'INSTRUCTION_STAGES' is assigned a value but never used              no-unused-vars
+   35:7   warning  'DEFAULT_EXECUTION_CYCLES' is assigned a value but never used        no-unused-vars
+   50:7   warning  'INSTRUCTION_TO_FUNCTIONAL_UNIT' is assigned a value but never used  no-unused-vars
+   71:7   warning  'DEFAULT_FUNCTIONAL_UNITS' is assigned a value but never used        no-unused-vars
+  127:10  warning  'createDefaultRegisterStatus' is defined but never used              no-unused-vars
+
+/home/runner/work/exp-dynamic-scheduling-scoreboard-iiith/exp-dynamic-scheduling-scoreboard-iiith/experiment/simulation/js/utils/validation.js
+    3:7    warning  'ScoreboardValidator' is defined but never used  no-unused-vars
+   21:32   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+   30:56   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+   43:42   warning  'INSTRUCTION_TO_FUNCTIONAL_UNIT' is not defined  no-undef
+   71:32   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+   79:32   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+   82:89   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+   87:32   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+   90:121  warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  147:32   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  155:32   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  206:32   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  214:32   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  284:32   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  288:35   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  290:39   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  294:35   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  296:39   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  300:35   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  302:39   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+  306:35   warning  'INSTRUCTION_STAGES' is not defined              no-undef
+
+✖ 150 problems (0 errors, 150 warnings)
+
