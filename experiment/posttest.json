@@ -2,38 +2,157 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "What is the key role of the scoreboard in dynamic scheduling?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Detecting and eliminating compiler errors",
+        "b": "Enabling parallelism by statically reordering instructions",
+        "c": "Dynamically tracking instruction states and dependencies",
+        "d": "Compressing instruction sequences for efficiency"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "This is a Sample Question 2?",
-      "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
-      },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Scoreboarding is unrelated to compile-time errors.",
+        "b": "Scoreboarding operates dynamically, not statically.",
+        "c": "Correct. The scoreboard tracks instruction and hazard state.",
+        "d": "Compression is not the goal."
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
+    },
+    {
+      "question": "Compared to static scheduling, scoreboarding allows:",
+      "answers": {
+        "a": "Out-of-order issue and in-order write",
+        "b": "In-order issue and out-of-order completion",
+        "c": "Full out-of-order execution with hazard control",
+        "d": "Instruction speculation"
+      },
+      "explanations": {
+        "a": "Incorrect ordering.",
+        "b": "Scoreboarding also allows out-of-order issue.",
+        "c": "Correct. Scoreboarding enables out-of-order flow.",
+        "d": "Speculation is not handled by scoreboarding."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following must be true before the 'Read Operands' stage begins for an instruction?",
+      "answers": {
+        "a": "Functional unit must be free",
+        "b": "Destination register must be locked",
+        "c": "All source operands must be available",
+        "d": "All previous instructions must have completed"
+      },
+      "explanations": {
+        "a": "That’s checked at Issue stage.",
+        "b": "Write-back, not Read, locks destination.",
+        "c": "Correct. Operand readiness is required.",
+        "d": "Out-of-order execution allows overlap."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In scoreboarding, the Issue stage is blocked when:",
+      "answers": {
+        "a": "All source operands are not ready",
+        "b": "The instruction has a RAW dependency",
+        "c": "The functional unit is busy or WAW hazard exists",
+        "d": "The instruction is already in the scoreboard"
+      },
+      "explanations": {
+        "a": "Read Operands handles this.",
+        "b": "RAW affects later stage.",
+        "c": "Correct. Structural and WAW hazards block issue.",
+        "d": "Already issued instructions aren't re-issued."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "A 'Write Result' stage must be delayed if:",
+      "answers": {
+        "a": "Another instruction has already written to the same register",
+        "b": "Another instruction is scheduled to write to the same register",
+        "c": "The functional unit is still busy",
+        "d": "The operands are not yet fetched"
+      },
+      "explanations": {
+        "a": "Completed instructions do not block.",
+        "b": "Correct. This is a WAW hazard.",
+        "c": "Execution has already completed before Write.",
+        "d": "Operand fetching is handled earlier."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What causes a structural hazard in a scoreboard-based system?",
+      "answers": {
+        "a": "Multiple instructions writing to the same register",
+        "b": "Functional unit unavailable when instruction is ready to issue",
+        "c": "Reading operands too early",
+        "d": "All instructions depending on the same source"
+      },
+      "explanations": {
+        "a": "That’s a WAW hazard.",
+        "b": "Correct. Structural hazard is a resource conflict.",
+        "c": "Operand read waits for readiness.",
+        "d": "That's a RAW hazard."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Which of the following is true under scoreboarding?\n\nI1: DIV F2, F4, F6\nI2: ADD F0, F2, F8\nI3: SUB F4, F0, F10",
+      "answers": {
+        "a": "I2 and I3 execute in order without stalls",
+        "b": "I2 stalls at Read Operands due to RAW",
+        "c": "I3 causes a WAW hazard with I1",
+        "d": "I2 is blocked due to structural hazard"
+      },
+      "explanations": {
+        "a": "I2 depends on F2 (from I1)",
+        "b": "Correct. RAW between I1 and I2.",
+        "c": "No WAW hazard here.",
+        "d": "DIV and ADD use different units."
+      },
+      "correctAnswer": "b",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "A student clicks 'Write Result' for an instruction, but it's blocked. Why?",
+      "answers": {
+        "a": "The instruction has not been issued",
+        "b": "A WAR hazard exists with an instruction not yet in Write Result",
+        "c": "A RAW hazard is pending",
+        "d": "The register is empty"
+      },
+      "explanations": {
+        "a": "The instruction already passed Execute.",
+        "b": "Correct. WAR hazard blocks Write Result.",
+        "c": "RAW affects Read Operands.",
+        "d": "Scoreboarding doesn't depend on register values."
+      },
+      "correctAnswer": "b",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "Which of the following best differentiates scoreboarding from Tomasulo’s algorithm?",
+      "answers": {
+        "a": "Scoreboarding tracks register readiness with tags",
+        "b": "Tomasulo’s algorithm uses a centralized scoreboard",
+        "c": "Scoreboarding uses register renaming to eliminate WAR/WAW",
+        "d": "Tomasulo uses register renaming; scoreboarding does not"
+      },
+      "explanations": {
+        "a": "Tag tracking is part of Tomasulo.",
+        "b": "Scoreboarding uses the scoreboard; Tomasulo does not.",
+        "c": "Scoreboarding does not use renaming.",
+        "d": "Correct. Register renaming is Tomasulo’s key enhancement."
+      },
+      "correctAnswer": "d",
+      "difficulty": "advanced"
     }
   ]
 }
