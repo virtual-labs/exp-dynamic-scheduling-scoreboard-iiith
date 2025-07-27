@@ -2,38 +2,157 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "What is the main purpose of scoreboarding in a processor pipeline?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "To reduce clock frequency",
+        "b": "To statically schedule instructions before execution",
+        "c": "To manage instruction dependencies and enable out-of-order execution",
+        "d": "To optimize cache coherence protocols"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "This is a Sample Question 2?",
-      "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
-      },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Clock frequency is unrelated to scoreboarding.",
+        "b": "Scoreboarding is dynamic, not static.",
+        "c": "Correct. Scoreboarding dynamically tracks dependencies and hazards.",
+        "d": "Cache coherence is unrelated to scoreboarding."
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following hazards can scoreboarding handle?",
+      "answers": {
+        "a": "Only RAW",
+        "b": "RAW and structural hazards",
+        "c": "RAW, WAR, WAW",
+        "d": "None"
+      },
+      "explanations": {
+        "a": "Not just RAW.",
+        "b": "Correct. Scoreboarding handles RAW and structural hazards.",
+        "c": "WAR and WAW require register renaming.",
+        "d": "Incorrect. Scoreboarding handles some hazards."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In the scoreboarding algorithm, which stage waits for all operands to be ready?",
+      "answers": {
+        "a": "Issue",
+        "b": "Read Operands",
+        "c": "Execute",
+        "d": "Write Result"
+      },
+      "explanations": {
+        "a": "Issue checks for structural hazards and WAW.",
+        "b": "Correct. Read Operands waits until all inputs are ready.",
+        "c": "Execution happens after operands are ready.",
+        "d": "Write Result comes after execution."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following causes an instruction to stall at the Issue stage in scoreboarding?",
+      "answers": {
+        "a": "Source operands not ready",
+        "b": "WAW hazard with an in-flight instruction",
+        "c": "Destination register not initialized",
+        "d": "Instruction has too many source operands"
+      },
+      "explanations": {
+        "a": "Operand readiness affects the Read stage.",
+        "b": "Correct. WAW hazards prevent issuing.",
+        "c": "Initialization is not a constraint here.",
+        "d": "Operand count doesn't block issue."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What happens if a WAR hazard is detected during Write Result stage in a scoreboard-based pipeline?",
+      "answers": {
+        "a": "It proceeds without concern",
+        "b": "It waits until dependent instructions finish",
+        "c": "It restarts the instruction",
+        "d": "WAR hazards are ignored"
+      },
+      "explanations": {
+        "a": "WAR hazards must be handled.",
+        "b": "Correct. WAR causes delay in Write Result.",
+        "c": "Instructions are not restarted.",
+        "d": "WAR hazards are not ignored."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "If two instructions require the same functional unit type and one is executing, the second instruction:",
+      "answers": {
+        "a": "Is canceled",
+        "b": "Is issued anyway",
+        "c": "Waits due to structural hazard",
+        "d": "Gets executed on a different unit"
+      },
+      "explanations": {
+        "a": "Instructions are not canceled.",
+        "b": "Scoreboarding blocks Issue on structural hazard.",
+        "c": "Correct. This is a structural hazard.",
+        "d": "Only if another identical unit is available."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Which instruction causes the first stall due to RAW hazard?\n\nI1: MUL F0, F1, F2\nI2: ADD F3, F0, F4\nI3: SUB F5, F3, F6",
+      "answers": {
+        "a": "I1",
+        "b": "I2",
+        "c": "I3",
+        "d": "None"
+      },
+      "explanations": {
+        "a": "I1 is independent.",
+        "b": "Correct. I2 needs F0 from I1.",
+        "c": "I3 depends on I2, but comes later.",
+        "d": "There is a RAW hazard."
+      },
+      "correctAnswer": "b",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "In a scoreboarding simulation, what would prevent an instruction from writing its result?",
+      "answers": {
+        "a": "A WAW hazard with another instruction",
+        "b": "A RAW hazard with the same instruction",
+        "c": "Operands not ready",
+        "d": "Execution not completed"
+      },
+      "explanations": {
+        "a": "Correct. WAW prevents Write Result.",
+        "b": "RAW affects Read stage.",
+        "c": "Operands are read before Execute.",
+        "d": "Execution must be complete first, but isn't the only condition."
+      },
+      "correctAnswer": "a",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "Which of the following statements about scoreboarding is false?",
+      "answers": {
+        "a": "It allows instructions to execute out-of-order",
+        "b": "It uses a central scoreboard to track instruction status",
+        "c": "It eliminates all types of hazards including WAR",
+        "d": "It enables higher instruction throughput than in-order pipelines"
+      },
+      "explanations": {
+        "a": "True.",
+        "b": "True.",
+        "c": "Correct. Scoreboarding cannot eliminate WAR hazards.",
+        "d": "True."
+      },
+      "correctAnswer": "c",
+      "difficulty": "advanced"
     }
   ]
 }
