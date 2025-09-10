@@ -1,16 +1,16 @@
-### Experiment Procedure
-
 1. **Select Instruction Sequence**  
    Begin by choosing a sequence of instructions using the provided input panel. You may either use one of the predefined examples or enter a custom instruction set to simulate.
 
 2. **Start the Simulation**  
    Once the instruction sequence is selected, start the simulation. The interface will display three key tables:
+
    - **Instruction Status Table**: Shows the progress of each instruction through the pipeline stages.
    - **Functional Unit Status Table**: Indicates the state and occupancy of each functional unit, including operand readiness.
    - **Register Status Table**: Displays which functional unit, if any, is writing to each register.
 
 3. **Advance Instructions Manually**  
    During the simulation, students must manually advance instructions through the four scoreboarding stages by clicking the appropriate cells in the **Instruction Status Table**:
+
    - **Issue**
    - **Read Operands**
    - **Execution Complete**
