@@ -31,13 +31,68 @@
 
         <!-- Edit Mode Panel -->
         <div id="edit-mode-panel">
+            <!-- Instructions Card -->
             <div class="card mb-6">
-                <h2 class="card-title">Instructions</h2>
+                <h2 class="card-title">How to Use This Simulator</h2>
+                <div class="card-body">
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">📝 Step 1: Build Your Instruction Sequence</h3>
+                            <p class="text-gray-700 mb-2">Add instructions using the form below. Each instruction requires:</p>
+                            <ul class="list-disc list-inside ml-4 text-gray-700 space-y-1">
+                                <li><strong>Instruction Type:</strong> Choose from arithmetic (ADDD, SUBD, MULTD, DIVD), integer (DADD, DSUB), logical (AND, OR, XOR), or memory operations (LD, SD)</li>
+                                <li><strong>Registers:</strong> Select destination and source registers (F0-F31 for floating-point, R0-R31 for integer)</li>
+                                <li><strong>Reordering:</strong> Use ↑/↓ buttons to change instruction order, or ✕ to remove instructions</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">▶️ Step 2: Start the Simulation</h3>
+                            <p class="text-gray-700">Once you've added at least one instruction, click <strong>"Start Simulation"</strong> to begin. The simulator will display three key tables:</p>
+                            <ul class="list-disc list-inside ml-4 text-gray-700 space-y-1">
+                                <li><strong>Instruction Status:</strong> Shows each instruction's progress through the 4 scoreboarding stages</li>
+                                <li><strong>Functional Unit Status:</strong> Displays the state of each functional unit (Integer, FP Adder, FP Multiplier, FP Divider)</li>
+                                <li><strong>Register Result Status:</strong> Tracks which functional unit will write to each register</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">🎯 Step 3: Execute Instructions Manually</h3>
+                            <p class="text-gray-700 mb-2">Click on cells in the <strong>Instruction Status</strong> table to advance instructions through these stages:</p>
+                            <ol class="list-decimal list-inside ml-4 text-gray-700 space-y-1">
+                                <li><strong>Issue:</strong> Instruction is issued if the functional unit is free and no WAW hazard exists</li>
+                                <li><strong>Read Operands:</strong> Operands are read when ready (no RAW hazard)</li>
+                                <li><strong>Execution Complete:</strong> Execution finishes after the required number of cycles</li>
+                                <li><strong>Write Result:</strong> Result is written if no WAR hazard exists</li>
+                            </ol>
+                            <p class="text-gray-700 mt-2"><strong>Note:</strong> You must complete all pending actions in the current cycle before advancing to the next cycle.</p>
+                        </div>
+
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">💡 Step 4: Learn from Feedback</h3>
+                            <p class="text-gray-700">The simulator provides real-time feedback:</p>
+                            <ul class="list-disc list-inside ml-4 text-gray-700 space-y-1">
+                                <li>If you click prematurely, you'll see an explanation of why the action is blocked (e.g., "RAW hazard: waiting for F2")</li>
+                                <li>Click <strong>"Hint"</strong> to get suggestions on what actions can be performed</li>
+                                <li>Use <strong>"Next Cycle"</strong> to advance time once all pending actions are complete</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-blue-50 p-3 rounded border border-blue-200">
+                            <p class="text-sm text-blue-800"><strong>💡 Tip:</strong> Start with simple instruction sequences (2-3 instructions) to understand the basics, then try more complex scenarios with dependencies and hazards.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instruction List and Builder Card -->
+            <div class="card mb-6">
+                <h2 class="card-title">Instruction Sequence</h2>
                 <div class="card-body">
                     <div id="instruction-list" class="mb-4">
                         <!-- Instruction list will be rendered here -->
                     </div>
-                    
+
                     <div class="border-t pt-4">
                         <h3 class="text-lg font-semibold mb-2">Add New Instruction</h3>
                         <div id="instruction-builder">
