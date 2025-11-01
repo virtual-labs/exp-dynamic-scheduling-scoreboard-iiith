@@ -101,6 +101,14 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Latency Configuration (Edit Mode) -->
+            <div class="card mb-6">
+                <h2 class="card-title">⚙️ Execution Latency Configuration</h2>
+                <div id="latency-config-edit" class="card-body">
+                    <!-- Latency configuration will be rendered here -->
+                </div>
+            </div>
         </div>
 
         <!-- Simulation Mode Panel -->
@@ -150,6 +158,14 @@
                     <!-- Register result status table will be rendered here -->
                 </div>
             </div>
+
+            <!-- Latency Configuration (Simulation Mode - Read Only) -->
+            <div class="card mb-6">
+                <h2 class="card-title">⚙️ Execution Latency Configuration</h2>
+                <div id="latency-config-simulation" class="card-body">
+                    <!-- Latency configuration will be rendered here (read-only) -->
+                </div>
+            </div>
         </div>
     </div>
 
@@ -163,6 +179,7 @@
     <script src="js/components/InstructionStatus.js"></script>
     <script src="js/components/FunctionalUnitStatus.js"></script>
     <script src="js/components/RegisterResult.js"></script>
+    <script src="js/components/LatencyConfig.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

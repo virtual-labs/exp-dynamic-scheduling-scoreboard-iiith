@@ -19,22 +19,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const simulationModePanel = document.getElementById('simulation-mode-panel');
     
     // Initialize components
-    let instructionBuilder, instructionList, instructionStatus, functionalUnitStatus, registerResult;
-    
+    let instructionBuilder, instructionList, instructionStatus, functionalUnitStatus, registerResult, latencyConfigEdit, latencyConfigSimulation;
+
     function initializeComponents() {
         instructionBuilder = new InstructionBuilder(
             'instruction-builder',
             scoreboard,
             onInstructionAdded
         );
-        
+
         instructionList = new InstructionList(
             'instruction-list',
             scoreboard,
             onInstructionRemoved,
             onInstructionsReordered
         );
-        
+
         instructionStatus = new InstructionStatus(
             'instruction-status',
             scoreboard,
@@ -42,15 +42,29 @@ document.addEventListener('DOMContentLoaded', () => {
             feedbackGenerator,
             onInstructionCellClick
         );
-        
+
         functionalUnitStatus = new FunctionalUnitStatus(
             'functional-unit-status',
             scoreboard
         );
-        
+
         registerResult = new RegisterResult(
             'register-result-status',
             scoreboard
+        );
+
+        // Latency config for edit mode (editable)
+        latencyConfigEdit = new LatencyConfig(
+            'latency-config-edit',
+            scoreboard,
+            onLatencyChange
+        );
+
+        // Latency config for simulation mode (read-only)
+        latencyConfigSimulation = new LatencyConfig(
+            'latency-config-simulation',
+            scoreboard,
+            onLatencyChange
         );
     }
 
@@ -86,8 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
             instructionStatus.render();
             functionalUnitStatus.render();
             registerResult.render();
+            latencyConfigSimulation.render(true); // Read-only mode
         } else {
             instructionList.render();
+            latencyConfigEdit.render(false); // Editable mode
         }
 
         // Update next cycle button state
@@ -213,6 +229,17 @@ document.addEventListener('DOMContentLoaded', () => {
         instructionList.render();
         updateUI(); // Update button states
         showFeedback("Instructions reordered.", 'success');
+    }
+
+    // Handle latency change
+    function onLatencyChange(result) {
+        if (result.success) {
+            showFeedback(result.message, 'success');
+            // Update the latency config display
+            latencyConfigEdit.updateDisplay();
+        } else {
+            showFeedback(result.message, 'error');
+        }
     }
     
     // Event listeners
