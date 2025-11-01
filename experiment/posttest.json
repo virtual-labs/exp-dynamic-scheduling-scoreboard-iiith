@@ -104,16 +104,16 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "Which of the following is true under scoreboarding?\n\nI1: DIV F2, F4, F6\nI2: ADD F0, F2, F8\nI3: SUB F4, F0, F10",
+      "question": "Which of the following is true under scoreboarding?<br><br><ol><li>DIV F2, F4, F6</li><li>ADD F0, F2, F8</li><li>SUB F4, F0, F10</li></ol>",
       "answers": {
-        "a": "I2 and I3 execute in order without stalls",
-        "b": "I2 stalls at Read Operands due to RAW",
-        "c": "I3 causes a WAW hazard with I1",
-        "d": "I2 is blocked due to structural hazard"
+        "a": "Instruction 2 and Instruction 3 execute in order without stalls",
+        "b": "Instruction 2 stalls at Read Operands due to RAW",
+        "c": "Instruction 3 causes a WAW hazard with Instruction 1",
+        "d": "Instruction 2 is blocked due to structural hazard"
       },
       "explanations": {
-        "a": "I2 depends on F2 (from I1)",
-        "b": "Correct. RAW between I1 and I2.",
+        "a": "Instruction 2 depends on F2 (from Instruction 1)",
+        "b": "Correct. RAW between Instruction 1 and Instruction 2.",
         "c": "No WAW hazard here.",
         "d": "DIV and ADD use different units."
       },

@@ -2,10 +2,10 @@
 
 | SNo. | Name | Email | Institute | ID  |
 | :--: | :--: | :---: | :-------: | :-: |
-|  1   | name | email | institute | id  |
+|  1   | Pramod Rao | pramodraob99@gmail.com | IIIT Hyderabad | id  |
 
 ### Developers
 
 | SNo. | Name | Email | Institute | ID  |
 | :--: | :--: | :---: | :-------: | :-: |
-|  1   | name | email | institute | id  |
+|  1   | Pramod Rao | pramodraob99@gmail.com | IIIT Hyderabad | id  |

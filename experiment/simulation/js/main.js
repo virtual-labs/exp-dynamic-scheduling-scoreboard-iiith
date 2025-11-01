@@ -19,22 +19,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const simulationModePanel = document.getElementById('simulation-mode-panel');
     
     // Initialize components
-    let instructionBuilder, instructionList, instructionStatus, functionalUnitStatus, registerResult;
-    
+    let instructionBuilder, instructionList, instructionStatus, functionalUnitStatus, registerResult, latencyConfigEdit, latencyConfigSimulation;
+
     function initializeComponents() {
         instructionBuilder = new InstructionBuilder(
             'instruction-builder',
             scoreboard,
             onInstructionAdded
         );
-        
+
         instructionList = new InstructionList(
             'instruction-list',
             scoreboard,
             onInstructionRemoved,
             onInstructionsReordered
         );
-        
+
         instructionStatus = new InstructionStatus(
             'instruction-status',
             scoreboard,
@@ -42,43 +42,70 @@ document.addEventListener('DOMContentLoaded', () => {
             feedbackGenerator,
             onInstructionCellClick
         );
-        
+
         functionalUnitStatus = new FunctionalUnitStatus(
             'functional-unit-status',
             scoreboard
         );
-        
+
         registerResult = new RegisterResult(
             'register-result-status',
             scoreboard
         );
+
+        // Latency config for edit mode (editable)
+        latencyConfigEdit = new LatencyConfig(
+            'latency-config-edit',
+            scoreboard,
+            onLatencyChange
+        );
+
+        // Latency config for simulation mode (read-only)
+        latencyConfigSimulation = new LatencyConfig(
+            'latency-config-simulation',
+            scoreboard,
+            onLatencyChange
+        );
     }
-    
+
     // Update the UI
     function updateUI() {
         // Update mode indicator
         modeIndicator.textContent = scoreboard.simulationStarted ? 'Simulation Mode' : 'Edit Mode';
-        
+
         // Show/hide appropriate panels
         editModePanel.classList.toggle('hidden', scoreboard.simulationStarted);
         simulationModePanel.classList.toggle('hidden', !scoreboard.simulationStarted);
-        
+
         // Show/hide buttons
         startButton.classList.toggle('hidden', scoreboard.simulationStarted);
         stopButton.classList.toggle('hidden', !scoreboard.simulationStarted);
-        
+
+        // Enable/disable start button based on whether instructions exist
+        const hasInstructions = scoreboard.instructions.length > 0;
+        startButton.disabled = !hasInstructions;
+        startButton.classList.toggle('opacity-50', !hasInstructions);
+        startButton.classList.toggle('cursor-not-allowed', !hasInstructions);
+        if (!hasInstructions) {
+            startButton.title = "Add at least one instruction to start the simulation";
+        } else {
+            startButton.title = "";
+        }
+
         // Update cycle counter
         currentCycleElement.textContent = scoreboard.currentCycle;
-        
+
         // Update component views
         if (scoreboard.simulationStarted) {
             instructionStatus.render();
             functionalUnitStatus.render();
             registerResult.render();
+            latencyConfigSimulation.render(true); // Read-only mode
         } else {
             instructionList.render();
+            latencyConfigEdit.render(false); // Editable mode
         }
-        
+
         // Update next cycle button state
         const cycleValidation = validator.canAdvanceCycle();
         nextCycleButton.disabled = !cycleValidation.valid;
@@ -184,21 +211,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle new instruction added
     function onInstructionAdded(instructionIndex) {
         instructionList.render();
+        updateUI(); // Update button states
         showFeedback(`Added new instruction: ${scoreboard.instructions[instructionIndex].type}`, 'success');
     }
-    
+
     // Handle instruction removed
     function onInstructionRemoved(index) {
         scoreboard.removeInstruction(index);
         instructionList.render();
+        updateUI(); // Update button states
         showFeedback("Instruction removed.", 'success');
     }
-    
+
     // Handle instructions reordered
     function onInstructionsReordered(fromIndex, toIndex) {
         scoreboard.reorderInstructions(fromIndex, toIndex);
         instructionList.render();
+        updateUI(); // Update button states
         showFeedback("Instructions reordered.", 'success');
+    }
+
+    // Handle latency change
+    function onLatencyChange(result) {
+        if (result.success) {
+            showFeedback(result.message, 'success');
+            // Update the latency config display
+            latencyConfigEdit.updateDisplay();
+        } else {
+            showFeedback(result.message, 'error');
+        }
     }
     
     // Event listeners
@@ -239,9 +280,9 @@ document.addEventListener('DOMContentLoaded', () => {
             showFeedback(result.message, 'error');
         }
     });
-    
+
     // Initialize and render
     initializeComponents();
     updateUI();
-    showFeedback("Welcome to the Scoreboard Pipeline Simulator. Add instructions and then click 'Start Simulation' to begin.", 'info');
+    showFeedback("Welcome! Read the instructions above, then add at least one instruction using the form below to begin.", 'info');
 });

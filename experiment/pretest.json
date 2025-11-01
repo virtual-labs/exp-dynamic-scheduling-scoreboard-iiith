@@ -104,17 +104,17 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "Which instruction causes the first stall due to RAW hazard?\n\nI1: MUL F0, F1, F2\nI2: ADD F3, F0, F4\nI3: SUB F5, F3, F6",
+      "question": "Which instruction causes the first stall due to RAW hazard?<br><br><ol><li>MUL F0, F1, F2</li><li>ADD F3, F0, F4</li><li>SUB F5, F3, F6</li></ol>",
       "answers": {
-        "a": "I1",
-        "b": "I2",
-        "c": "I3",
+        "a": "Instruction 1",
+        "b": "Instruction 2",
+        "c": "Instruction 3",
         "d": "None"
       },
       "explanations": {
-        "a": "I1 is independent.",
-        "b": "Correct. I2 needs F0 from I1.",
-        "c": "I3 depends on I2, but comes later.",
+        "a": "Instruction 1 is independent.",
+        "b": "Correct. Instruction 2 needs F0 from Instruction 1.",
+        "c": "Instruction 3 depends on Instruction 2, but comes later.",
         "d": "There is a RAW hazard."
       },
       "correctAnswer": "b",
