@@ -1,16 +1,18 @@
-## Step 1: Build Your Instruction Sequence
+### Step 1: Build Your Instruction Sequence
 
 Begin by constructing a sequence of instructions that will demonstrate scoreboarding concepts. The simulator supports the following instruction types:
 
-### Available Instructions
+#### Available Instructions
 
 - **Memory Operations**:
+
   - `LD` (Load): Loads data from memory into a register
   - `SD` (Store): Stores data from a register to memory
   - Base address register must be an integer register (R0-R31)
   - Destination/source can be either integer (R0-R31) or floating-point (F0-F31) registers
 
 - **Integer ALU Operations** (use only R0-R31):
+
   - `DADD`: Integer addition
   - `DSUB`: Integer subtraction
   - `AND`: Bitwise AND
@@ -23,7 +25,7 @@ Begin by constructing a sequence of instructions that will demonstrate scoreboar
   - `MULTD`: Double-precision floating-point multiplication
   - `DIVD`: Double-precision floating-point division
 
-### Building Your Sequence
+#### Building Your Sequence
 
 1. Select an instruction type from the dropdown menu
 2. Choose appropriate registers based on the instruction type:
@@ -37,7 +39,7 @@ Begin by constructing a sequence of instructions that will demonstrate scoreboar
 
 **Tip**: Try creating sequences with potential RAW, WAR, and WAW hazards to see how scoreboarding manages them!
 
-## Step 2: Configure Execution Latencies
+### Step 2: Configure Execution Latencies
 
 Before starting the simulation, configure the execution latencies (number of cycles) for each instruction type. This allows you to experiment with different processor configurations:
 
@@ -52,23 +54,25 @@ Valid range: 1-100 cycles per instruction type.
 
 **Note**: Latencies cannot be modified once the simulation has started. You must stop and reset to change them.
 
-## Step 3: Start the Simulation
+### Step 3: Start the Simulation
 
 Once your instruction sequence is ready and latencies are configured, click the **"Start Simulation"** button (enabled only when at least one instruction is added). The interface will transition to simulation mode and display the following components:
 
-### Simulation Interface Components
+#### Simulation Interface Components
 
 1. **Instruction Status Table**
    Tracks the progress of each instruction through the four pipeline stages. Each cell shows the cycle number when that stage completed, or is clickable if the stage is ready to execute.
 
 2. **Functional Unit Status Table**
    Displays the state of all functional units:
+
    - **Integer**: Handles integer ALU operations (DADD, DSUB, AND, OR, XOR) and memory operations (LD, SD)
    - **FP Adder**: Handles ADDD and SUBD operations
    - **FP Multiplier**: Handles MULTD operations
    - **FP Divider**: Handles DIVD operations
 
    For each unit, you can see:
+
    - **Busy**: Whether the unit is currently occupied
    - **Op**: The operation being performed
    - **Fi**: Destination register
@@ -83,13 +87,14 @@ Once your instruction sequence is ready and latencies are configured, click the 
 4. **Execution Latency Configuration** (Read-Only)
    Displays the configured latencies for reference during simulation. To change these, you must stop the simulation and return to edit mode.
 
-## Step 4: Advance Instructions Through Pipeline Stages
+### Step 4: Advance Instructions Through Pipeline Stages
 
 The core of the learning experience involves manually advancing instructions through the pipeline stages by clicking on cells in the **Instruction Status Table**. Instructions must progress through these stages in order:
 
-### Stage 1: Issue
+#### Stage 1: Issue
 
 **What happens**:
+
 - Checks for an available functional unit (structural hazard check)
 - Checks for WAW hazard: ensures no other active instruction will write to the same destination register
 - Marks the functional unit as busy
@@ -97,43 +102,49 @@ The core of the learning experience involves manually advancing instructions thr
 - Sets up operand tracking (Qj, Qk, Rj, Rk flags)
 
 **Constraints**:
+
 - Instructions must issue **in program order** (cannot issue instruction N+1 until instruction N has issued)
 - Requires an available functional unit of the appropriate type
 - No WAW hazard: no other instruction should be writing to the same destination register
 
 **Color coding**: Yellow = ready to issue, Gray = blocked by previous instruction, Red = structural hazard or WAW hazard
 
-### Stage 2: Read Operands
+#### Stage 2: Read Operands
 
 **What happens**:
+
 - Waits for source operands to become available
 - Checks the Rj and Rk flags in the functional unit status
 - Once both operands are ready, marks this stage as complete and begins execution
 
 **Constraints**:
+
 - Cannot occur in the same cycle as Issue (must wait at least one cycle)
 - Both source operands must be ready (Rj = true AND Rk = true)
 - This is where RAW (Read After Write) hazards are resolved
 
 **Color coding**: Yellow = ready to read, Gray = waiting for operands (RAW hazard)
 
-### Stage 3: Execution Complete
+#### Stage 3: Execution Complete
 
 **What happens**:
+
 - Marks the execution as finished after the configured number of cycles have elapsed
 - The functional unit's cycle counter decrements each cycle automatically
 - When the counter reaches 0, this stage becomes available
 
 **Constraints**:
+
 - Must wait for the full execution latency to elapse
 - Cannot complete execution in the same cycle as reading operands
 - The functional unit must have cyclesRemaining = 0
 
 **Color coding**: Yellow = execution finished (ready to mark complete), Gray = still executing
 
-### Stage 4: Write Result
+#### Stage 4: Write Result
 
 **What happens**:
+
 - Checks for WAR (Write After Read) hazards: ensures no instruction is still reading the old value
 - Writes the result to the destination register
 - Notifies all waiting functional units that this operand is now available (updates their Rj/Rk flags)
@@ -141,34 +152,38 @@ The core of the learning experience involves manually advancing instructions thr
 - Frees the functional unit for use by other instructions
 
 **Constraints**:
+
 - Execution must be complete
 - No WAR hazard: no instruction should be waiting to read operands that use this register
 
 **Color coding**: Yellow = ready to write, Gray = execution not complete, Red = WAR hazard
 
-### Pending Actions
+#### Pending Actions
 
 Actions that should be performed in the current cycle are highlighted in **yellow** in the Instruction Status Table. You must complete all pending actions before advancing to the next cycle using the **"Next Cycle"** button.
 
-## Step 5: Use Hints and Learn from Feedback
+### Step 5: Use Hints and Learn from Feedback
 
 The simulator provides several mechanisms to help you learn:
 
-### Hint System
+#### Hint System
 
 Click the **"Hint"** button at any time to receive suggestions about:
+
 - Which actions should be performed in the current cycle
 - Why certain actions are blocked
 - What conditions need to be met to proceed
 
-### Error Messages
+#### Error Messages
 
 If you attempt an invalid action, the simulator will:
+
 - Block the action from executing
 - Display a detailed error message explaining why it was blocked
 - Provide information about what needs to happen first
 
 Common error scenarios:
+
 - Trying to issue out of order
 - Attempting to read operands before they're ready (RAW hazard)
 - Trying to complete execution before enough cycles have elapsed
@@ -176,52 +191,56 @@ Common error scenarios:
 - Structural hazards (no available functional unit)
 - WAW hazards (another instruction writing to same register)
 
-### Visual Feedback
+#### Visual Feedback
 
 - **Green cells**: Stage completed
 - **Yellow cells**: Action ready to perform (pending)
 - **Gray cells**: Not yet ready (waiting for dependencies)
 - **Red cells**: Blocked (structural hazard, WAW hazard, or WAR hazard)
 
-## Step 6: Observe Scoreboarding in Action
+### Step 6: Observe Scoreboarding in Action
 
 As you advance through the simulation, pay special attention to how scoreboarding manages hazards:
 
-### RAW (Read After Write) Hazards
+#### RAW (Read After Write) Hazards
 
 When an instruction needs to read a register that a previous instruction will write:
+
 - The dependent instruction waits in the "Read Operands" stage
 - The Qj or Qk field shows which functional unit is producing the needed value
 - Rj or Rk is set to false (not ready)
 - Once the producing instruction writes its result, the flags are updated
 - The dependent instruction can then proceed
 
-### WAW (Write After Write) Hazards
+#### WAW (Write After Write) Hazards
 
 When two instructions write to the same register:
+
 - The second instruction cannot issue until the first completes
 - The Register Result Status prevents multiple writers to the same register
 - This ensures results are written in the correct order
 
-### WAR (Write After Read) Hazards
+#### WAR (Write After Read) Hazards
 
 When an instruction wants to write a register that earlier instructions are still reading:
+
 - The writing instruction must wait in the "Write Result" stage
 - It can only write after all readers have completed their "Read Operands" stage
 - This preserves the correct data flow
 
-### Out-of-Order Execution
+#### Out-of-Order Execution
 
 Observe how instructions can complete out of program order:
+
 - Instructions with no dependencies can execute in parallel
 - Long-latency operations (like DIVD) don't block independent instructions
 - The scoreboard tracks all dependencies to maintain correctness
 
-## Step 7: Complete the Simulation
+### Step 7: Complete the Simulation
 
 Continue advancing instructions through all stages until every instruction has completed the **Write Result** stage.
 
-### Analysis Questions
+#### Analysis Questions
 
 After completing the simulation, analyze the results:
 
@@ -235,7 +254,7 @@ After completing the simulation, analyze the results:
 
 5. **Critical Path**: Which instruction(s) took the longest? Did they create a bottleneck?
 
-### Experiment Variations
+#### Experiment Variations
 
 Try these variations to deepen your understanding:
 
